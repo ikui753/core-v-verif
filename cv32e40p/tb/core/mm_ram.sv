@@ -288,11 +288,13 @@ module mm_ram
         tests_failed_o      = '0;
         exit_value_o        =  0;
         exit_valid_o        = '0;
+        // verilator lint_off MULTIDRIVEN
         data_req_dec        = '0;
         data_addr_dec       = '0;
         data_wdata_dec      = '0;
         data_we_dec         = '0;
         data_be_dec         = '0;
+        // verilator lint_on MULTIDRIVEN
         print_wdata         = '0;
         print_valid         = '0;
         timer_wdata         = '0;
@@ -309,7 +311,9 @@ module mm_ram
         rnd_num_req         = '0;
         cycle_count_clear   = '0;
         select_rdata_d      = RAM;
+        // verilator lint_off MULTIDRIVEN
         transaction         = T_PER;
+        // verilator lint_on MULTIDRIVEN
 
         if (data_req_i & data_gnt_o) begin
             if (data_we_i) begin // handle writes

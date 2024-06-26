@@ -324,9 +324,9 @@ $(warning RISCV_CFLAGS set to $(RISCV_CFLAGS))
 #$(error STOP IT!)
 
 # Keeping this around just in case it is needed again
-#ifeq ($(firstword $(subst _, ,$(TEST))),pulp)
-#  CFLAGS = -Os -g -D__riscv__=1 -D__LITTLE_ENDIAN__=1 -march=rv32imcxpulpv2 -Wa,-march=rv32imcxpulpv2 -fdata-sections -ffunction-sections -fdiagnostics-color=always
-#endif
+ifeq ($(firstword $(subst _, ,$(TEST))),pulp)
+ CFLAGS = -Os -g -D__riscv__=1 -D__LITTLE_ENDIAN__=1 -march=rv32imcxpulpv2 -Wa,-march=rv32imcxpulpv2 -fdata-sections -ffunction-sections -fdiagnostics-color=always
+endif
 
 ASM       ?= ../../tests/asm
 ASM_DIR   ?= $(ASM)
