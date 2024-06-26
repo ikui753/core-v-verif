@@ -18,12 +18,16 @@
 .globl _start
 .globl main
 .globl exit
-.section .text
+.section .text.start
 .global test_results
 test_results:
 	.word 123456789
+
+_start:
+    j _start_main
+    
 #tests all multiply-accumulate instructions. NOTE: value of register x15 at the end of the test is the error count
-main:
+_start_main:
 # enable interrupts
     li        t0, (0x1 << 3)
     csrs      mstatus, t0
@@ -1095,4 +1099,29 @@ exit_check:
 exit:
     li x17, 0x20000000
     sw x18,0(x17)
+    
+    lui a0,print_port>>12
+    addi a1,zero,'\n'
+    sw a1,0(a0)
+    addi a1,zero,'C'
+    sw a1,0(a0)
+    addi a1,zero,'V'
+    sw a1,0(a0)
+    addi a1,zero,'3'
+    sw a1,0(a0)
+    addi a1,zero,'2'
+    sw a1,0(a0)
+    addi a1,zero,' '
+    sw a1,0(a0)
+    addi a1,zero,'D'
+    sw a1,0(a0)
+    addi a1,zero,'O'
+    sw a1,0(a0)
+    addi a1,zero,'N'
+    sw a1,0(a0)
+    addi a1,zero,'E'
+    sw a1,0(a0)
+    addi a1,zero,'\n'
+    sw a1,0(a0)
+    sw a1,0(a0)
     wfi
