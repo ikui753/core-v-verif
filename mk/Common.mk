@@ -325,7 +325,7 @@ $(warning RISCV_CFLAGS set to $(RISCV_CFLAGS))
 
 # Keeping this around just in case it is needed again
 ifeq ($(firstword $(subst _, ,$(TEST))),pulp)
- CFLAGS = -Os -g -D__riscv__=1 -D__LITTLE_ENDIAN__=1 -march=rv32imcxpulpv2_xcvmac -Wa,-march=rv32imcxpulpv2 -fdata-sections -ffunction-sections -fdiagnostics-color=always
+ CFLAGS = -Os -g -D__riscv__=1 -D__LITTLE_ENDIAN__=1 -march=rv32imcxpulpv2 -Wa,-march=rv32imcxpulpv2 -fdata-sections -ffunction-sections -fdiagnostics-color=always
 endif
 
 ASM       ?= ../../tests/asm
