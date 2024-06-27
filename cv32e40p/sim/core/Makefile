@@ -511,8 +511,10 @@ veri-test: verilate $(TEST_PROGRAM_PATH)/$(TEST)/$(TEST).hex
 	$(SIM_TEST_RESULTS)/verilator_executable \
 		$(VERI_FLAGS) \
 		"+firmware=$(TEST_PROGRAM_RELPATH)/$(TEST)/$(TEST).hex" \
-		| tee $(VERI_LOG_DIR)/$(TEST).log
-
+		| tee $(VERI_LOG_DIR)/$(TEST).log \
+		
+	@echo "$(BANNER)"
+	@echo "* Finished test *"
 # verilator specific cleanup
 veri-clean: verilate-clean
 

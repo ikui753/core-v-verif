@@ -13,7 +13,7 @@ _start_main:
 				li x0, 0x00000002
 				li x1, 0x00000001
 				li x2, 0x00000003
-                #p.mac x2, x1, x0
+                p.mac x2, x1, x0
 				ori x3, x1, 2
 				bne x3, x2, _test_failed
 				j _test_passed
